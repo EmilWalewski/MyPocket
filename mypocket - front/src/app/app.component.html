@@ -1,0 +1,44 @@
+
+<header [class.open]="open">
+  <div class="custom-container">
+    <div class="nav">
+      <div class="menu-toggle" (click)="switchMenu()">
+        <div class="dispose">X</div>
+        <div class="stacks">||||</div>
+      </div>
+      <a href="" class="logo">MyPocket.com</a>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="" class="nav-link" (click)="logout()">About us</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="" class="nav-link" (click)="openMenu()">Sign In</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</header>
+
+
+<!-- <ng-container #welcomePage></ng-container> -->
+
+<router-outlet></router-outlet>
+<!-- <app-toss></app-toss> -->
+
+<!-- <section *ngIf="notLogged; else logged" class="hero is-fullheight is-primary is-bold mobile-view" >
+  <router-outlet></router-outlet>
+</section>
+
+<ng-template #logged>
+  <h1>tw bolek</h1>
+  </ng-template> -->
+
+<!-- <ng-template #logged>
+<section class="routing-section">
+  <div class="custom-container">
+  <router-outlet></router-outlet>
+</div>
+</section>
+</ng-template> -->
+
+<app-login [openDialog]="openLoginMenu" (closeDialogEvent)="closeMenu()"></app-login>

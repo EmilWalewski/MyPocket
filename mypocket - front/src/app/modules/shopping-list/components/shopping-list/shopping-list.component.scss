@@ -1,0 +1,185 @@
+
+.my-container{
+    width: 100%;
+    height: 90vh;
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid red;
+}
+
+/*
+
+    test component scss
+
+*/
+
+$icon-dimensions-large: 2rem;
+
+.custom-box{
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    margin-bottom: 1rem;
+    background-color: rgb(243, 236, 236);
+
+    .box-content{
+
+        display: flex;
+        height: 100%;
+
+        .shopping-info{
+
+            display: flex;
+            align-items: center;
+
+            .shopping-details{
+
+                margin-left: 2rem;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+
+                p{
+                    font-size: 1.1rem;
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+
+        .box-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 8rem;
+            background-color: green;
+
+            .resize-icon{
+                color: white;
+            }
+
+        }
+    }
+}
+
+
+.shadow{
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.custom-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+    background-color: rgb(124, 107, 107);
+    border-radius: 10rem;
+    padding: .5rem 1rem;
+    color: white;
+
+    .day{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .day + p{
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+}
+
+.central-content-container{
+    width: 100%;
+    height: 90vh;
+    // margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: space-around;
+
+    // border: 2px solid red;
+
+    .date{
+        padding: 1rem .2rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.bottom-menu{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(34, 34, 177);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .opt{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        // border: 1px solid blue;
+        border: none;
+        color: white;
+        cursor: pointer;
+
+        p{
+            margin-top: .2rem;
+            font-size: .8rem;
+        }
+          
+    }
+}
+
+.progress-bar-box{
+
+    background-color: rgba(0,0,0,0.8);
+    // opacity: 0.8;
+
+ .progress-box{
+     
+    // padding: 2rem 0;
+    width: 90%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 2rem;
+
+    .progress-content{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2{
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: .8rem;
+    }
+}
+}
+
+@media screen and (min-width: 769px){
+
+    .date{
+        padding: 1rem .2rem !important;
+    }
+
+}
