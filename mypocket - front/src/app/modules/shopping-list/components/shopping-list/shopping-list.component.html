@@ -4,6 +4,7 @@
     <div class="container">
         <div class="central-content-container">
 
+<<<<<<< HEAD
             <input type="month" #dateSelector class="date" [ngStyle]="setMargin()" (change)="filterReceipts($event)">
 
             <div class="filterIndicator" *ngIf="indicatorIsVisible">
@@ -12,6 +13,9 @@
                     <p>{{dateSelector.value}}</p>
                 </div>
             </div>
+=======
+            <input type="month" class="date" (change)="filterReceipts($event)">
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
             <!-- <div class="box shadow pointer" *ngFor="let receipt of receiptLists" (click)="showReceiptDetails(receipt.id)">
                 <article class="media">

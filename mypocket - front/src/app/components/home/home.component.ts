@@ -128,8 +128,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['list'], { relativeTo: this.route });
   }
 
+<<<<<<< HEAD
   getAccountBalance() {
     this.router.navigate(['account'], { relativeTo: this.route });
   }
 
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 }

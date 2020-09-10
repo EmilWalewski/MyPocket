@@ -20,6 +20,7 @@ const routes: Routes = [
       {
         path: 'list',
         loadChildren: () => import('./modules/shopping-list/shopping-list.module').then(m => m.ShoppingListModule)
+<<<<<<< HEAD
       },
       {
         path: 'account',
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/',
     pathMatch: 'full'
+=======
+      }
+    ]
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   }
 ];
 

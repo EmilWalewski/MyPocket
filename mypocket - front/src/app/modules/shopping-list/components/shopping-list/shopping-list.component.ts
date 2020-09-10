@@ -7,7 +7,10 @@ import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { DomSanitizer } from '@angular/platform-browser';
 import { tap, switchMap } from 'rxjs/operators';
 import { Subscription, Observable, of } from 'rxjs';
+<<<<<<< HEAD
 import { Type } from '@angular/compiler';
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
 @Component({
   selector: 'app-shopping-list',
@@ -16,6 +19,7 @@ import { Type } from '@angular/compiler';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
 
+<<<<<<< HEAD
   /**
    *    File Selector Dialog View Child
    */
@@ -39,10 +43,20 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   /**
    *    Read text from image controls
    */
+=======
+  @ViewChild('fileSelector') fileDialog: ElementRef;
+
+  @ViewChild('progressContainer', { read: ViewContainerRef }) progressContainer: ViewContainerRef;
+  @ViewChild('processingBar') progressTemplate: TemplateRef<any>;
+
+  @ViewChild('receiptPhoto') photo: ElementRef;
+
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   private worker;
   private dictionary = new Dictionary();
   progress = 1;
 
+<<<<<<< HEAD
   /**
    *    Receipt list and help table
    */
@@ -51,6 +65,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   // check if whatever date is selected
   indicatorIsVisible = false;
+=======
+  receiptLists: ReceiptResponse[];
+
+  private uploadSubscription: Subscription;
+  private tempTable;
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
 
   private tesseractConfig = {
@@ -137,7 +157,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
       console.log(receipt);
 
+<<<<<<< HEAD
       this.receiptService
+=======
+      this.uploadSubscription = this.receiptService
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
         .uploadReceipt(receipt, event.target.files[0])
         .subscribe(data => {
           this.router.navigate([data.body.id], { relativeTo: this.route });
@@ -155,6 +179,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   filterReceipts(event) {
+<<<<<<< HEAD
 
     if (event instanceof Object) {
 
@@ -191,6 +216,20 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.filterReceipts('');
   }
 
+=======
+    console.log(event.target.value);
+
+    if (event.target.value !== '') {
+
+      this.tempTable = this.receiptLists;
+      this.receiptLists = this.receiptLists.filter(r => r.price < 20);
+
+    } else {
+      this.receiptLists = this.tempTable;
+    }
+  }
+
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   showReceiptDetails(id: number) {
     // this.router.navigate([{ outlets: { primary: '', bolek: [id] } }]);
     this.router.navigate([id], { relativeTo: this.route });

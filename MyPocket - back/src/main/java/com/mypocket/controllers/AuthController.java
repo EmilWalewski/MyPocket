@@ -2,7 +2,10 @@ package com.mypocket.controllers;
 
 import com.mypocket.security.jwtConfiguration.jwtProvider.JwtProvider;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.mypocket.security.jwtConfiguration.jwtUtilities.JwtRefreshToken;
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import com.mypocket.security.jwtConfiguration.jwtUtilities.JwtResponse;
@@ -18,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 @RestController
@@ -46,6 +52,7 @@ public class AuthController {
         )), HttpStatus.OK
         );
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
 
     @PostMapping(value = "/refresh", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,6 +68,9 @@ public class AuthController {
         }catch (NullPointerException e){
             return ResponseEntity.status(401).build();
         }
+=======
+
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59

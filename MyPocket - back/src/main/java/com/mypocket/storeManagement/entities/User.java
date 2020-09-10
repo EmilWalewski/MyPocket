@@ -21,8 +21,11 @@ public class User {
     private int isActive;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @OneToMany(targetEntity = Wallet.class, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Wallet> wallets;
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
@@ -61,6 +64,7 @@ public class User {
         this.isActive = isActive;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public List<Wallet> getWallets() {
         return wallets;
@@ -69,6 +73,8 @@ public class User {
     public void setWallets(List<Wallet> wallets) {
         this.wallets = wallets;
     }
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 }

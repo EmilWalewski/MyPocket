@@ -4,7 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mypocket.storeManagement.entities.Photo;
 import com.mypocket.storeManagement.entities.Receipt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 //import org.json.JSONObject;
+=======
+import org.json.JSONObject;
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 import org.json.JSONObject;
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59

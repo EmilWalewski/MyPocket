@@ -5,7 +5,11 @@ import com.mypocket.security.userConfiguration.PrincipalDetailsService;
 import com.mypocket.storeManagement.entities.*;
 import com.mypocket.storeManagement.models.ShoppingModel;
 <<<<<<< HEAD
+<<<<<<< HEAD
 //import org.json.JSONObject;
+=======
+import org.json.JSONObject;
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 import org.json.JSONObject;
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
@@ -31,7 +35,11 @@ public class MySqlStoreUtilities {
     private EntityManager sqlEntityManager;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //    private JSONObject globalJsonObject;
+=======
+    private JSONObject globalJsonObject;
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
     private JSONObject globalJsonObject;
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
@@ -45,7 +53,11 @@ public class MySqlStoreUtilities {
         shopping.setProductList(shoppingModel.getProductList().stream().map(Product::new).collect(Collectors.toList()));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //        globalJsonObject = new JSONObject();
+=======
+        globalJsonObject = new JSONObject();
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
         globalJsonObject = new JSONObject();
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
@@ -63,10 +75,16 @@ public class MySqlStoreUtilities {
 
         sqlEntityManager.persist(shopping);
 <<<<<<< HEAD
+<<<<<<< HEAD
 //        globalJsonObject.put("message", "Shopping information saved successfully");
 
 //        return globalJsonObject.toString();
         return null;
+=======
+        globalJsonObject.put("message", "Shopping information saved successfully");
+
+        return globalJsonObject.toString();
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
         globalJsonObject.put("message", "Shopping information saved successfully");
 
@@ -125,8 +143,13 @@ public class MySqlStoreUtilities {
 
         User user = new User();
 <<<<<<< HEAD
+<<<<<<< HEAD
         user.setUsername("b");
         user.setPassword(passwordEncoder.encode("b"));
+=======
+        user.setUsername("user1");
+        user.setPassword(passwordEncoder.encode("pass1"));
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
         user.setUsername("user1");
         user.setPassword(passwordEncoder.encode("pass1"));

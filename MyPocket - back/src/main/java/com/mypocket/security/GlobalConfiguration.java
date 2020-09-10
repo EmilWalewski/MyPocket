@@ -3,7 +3,10 @@ package com.mypocket.security;
 
 import com.mypocket.security.jwtConfiguration.jwtFilter.JwtFilter;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.mypocket.security.jwtConfiguration.jwtProvider.JwtProvider;
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import com.mypocket.security.userConfiguration.PrincipalDetailsService;
@@ -42,7 +45,10 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
 
     private PrincipalDetailsService principalDetailsService;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private JwtProvider tokenProvider;
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
@@ -50,9 +56,14 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
     public GlobalConfiguration(PrincipalDetailsService principalDetailsService, JwtProvider tokenProvider) {
         this.principalDetailsService = principalDetailsService;
         this.tokenProvider = tokenProvider;
+=======
+    public GlobalConfiguration(PrincipalDetailsService principalDetailsService) {
+        this.principalDetailsService = principalDetailsService;
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
     public GlobalConfiguration(PrincipalDetailsService principalDetailsService) {
         this.principalDetailsService = principalDetailsService;
@@ -63,7 +74,11 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtFilter jwtFilter(){
 <<<<<<< HEAD
+<<<<<<< HEAD
         return new JwtFilter(tokenProvider, principalDetailsService);
+=======
+        return new JwtFilter();
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
         return new JwtFilter();
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
@@ -98,6 +113,7 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/authenticate/**")
 <<<<<<< HEAD
+<<<<<<< HEAD
             .permitAll();
 
         http
@@ -109,13 +125,22 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
 
             .antMatchers("/receipt/**").permitAll();
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
+=======
+            .permitAll()
+
+            .antMatchers("/receipt/**").permitAll();
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
         //requests management
         http
             .authorizeRequests()
             .anyRequest()
 <<<<<<< HEAD
+<<<<<<< HEAD
             .permitAll();
+=======
+            .authenticated();
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
             .authenticated();
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59

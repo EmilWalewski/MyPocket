@@ -33,12 +33,15 @@
 			<version>0.9.1</version>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<!--<dependency>-->
 			<!--<groupId>com.auth0</groupId>-->
 			<!--<artifactId>java-jwt</artifactId>-->
 			<!--<version>3.10.3</version>-->
 		<!--</dependency>-->
 
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 

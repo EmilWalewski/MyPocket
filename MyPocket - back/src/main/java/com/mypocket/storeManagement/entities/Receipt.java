@@ -62,10 +62,13 @@ public class Receipt {
     private transient String encodedImage;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     public Receipt() {

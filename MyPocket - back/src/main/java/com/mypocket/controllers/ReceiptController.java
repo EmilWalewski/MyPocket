@@ -6,13 +6,19 @@ import com.mypocket.storeManagement.entities.Receipt;
 import com.mypocket.storeManagement.storeUtilities.PhotoStorage;
 import com.mypocket.storeManagement.utilities.res.ApiResponse;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 =======
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
+<<<<<<< HEAD
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
+=======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,15 +26,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import javax.servlet.http.HttpServletRequest;
 =======
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+<<<<<<< HEAD
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
+=======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import java.io.IOException;
 
@@ -40,8 +52,13 @@ public class ReceiptController {
     PhotoStorage photoStorage;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @PostMapping(value = "/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> uploadReceipt(@RequestParam(value = "file", required = false) MultipartFile photo, @RequestParam(value = "receipt_data", required = false) String receipt, HttpServletRequest request) throws IOException {
+=======
+    @RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.PATCH }, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> uploadReceipt(@RequestParam(value = "file", required = false) MultipartFile photo, @RequestParam("receipt_data") String receipt) throws IOException {
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
     @RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.PATCH }, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> uploadReceipt(@RequestParam(value = "file", required = false) MultipartFile photo, @RequestParam("receipt_data") String receipt) throws IOException {
@@ -69,7 +86,11 @@ public class ReceiptController {
 //        ).build();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         return ResponseEntity.ok(new ApiResponse<>(photoStorage.saveReceipt(receiptObject), HttpStatus.OK));
+=======
+        return ResponseEntity.ok(new ApiResponse(photoStorage.saveReceipt(receiptObject), HttpStatus.OK));
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 =======
         return ResponseEntity.ok(new ApiResponse(photoStorage.saveReceipt(receiptObject), HttpStatus.OK));
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59

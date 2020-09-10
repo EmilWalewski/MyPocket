@@ -4,7 +4,10 @@ import { LoginData, LoginRequest } from 'src/app/models/loginModel/login-request
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+<<<<<<< HEAD
 import { HttpErrorResponse } from '@angular/common/http';
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
 @Component({
   selector: 'app-login',
@@ -60,6 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     result.loginData = Object.assign({}, result.loginData);
 
     this.sub = this.auth.authenticate(result.loginData)
+<<<<<<< HEAD
       .subscribe(response => {
 
         // set validation error flag to false
@@ -79,4 +83,23 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       });
     }
+=======
+    .subscribe(response => {
+
+      // set validation error flag to false
+      this.validationError = response;
+
+      this.closeDialog();
+
+      // redirect to home
+      this.router.navigate(['/mypocket']);
+    },
+    error => {
+      this.validationError = true;
+      this.errorMessage = error.error.message;
+    });
+
+  }
+
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 }

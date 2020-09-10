@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+<<<<<<< HEAD
 import { tap, switchMap, map, catchError } from 'rxjs/operators';
+=======
+import { tap, switchMap, map } from 'rxjs/operators';
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import { Time } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -15,11 +19,16 @@ export class ReceiptService {
   }
 
 
+<<<<<<< HEAD
   uploadReceipt(receipt, event?): Observable<HttpResponse<any>> {
+=======
+  uploadReceipt(receipt, event?): Observable<HttpResponse<ApiResponse>> {
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
     const formData = new FormData();
 
     if (event != null) {
+<<<<<<< HEAD
 
       console.log(event);
       formData.append('file', event);
@@ -41,6 +50,20 @@ export class ReceiptService {
 
     return this.httpService.post<any>('http://localhost:8080/receipt/', formData, { observe: 'response' });
 
+=======
+      formData.append('file', event);
+      const t = { id: '', shop_name: '', shopping_date: '', price: '' };
+      t.shop_name = receipt.shop_name;
+      t.shopping_date = receipt.date + ' ' + receipt.time;
+      t.price = receipt.price;
+      formData.append('receipt_data', JSON.stringify(t));
+    }
+    else {
+      formData.append('receipt_data', JSON.stringify(receipt));
+    }
+
+    return this.httpService.post<ApiResponse>('http://localhost:8080/receipt/', formData, { observe: 'response' });
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   }
 
   getReceipt(id: number): Observable<ReceiptResponse> {

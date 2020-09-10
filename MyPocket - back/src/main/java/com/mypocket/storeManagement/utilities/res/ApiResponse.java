@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.http.HttpStatus;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class ApiResponse<T> {
 
     private T content;
@@ -21,6 +22,8 @@ public class ApiResponse<T> {
     public void setContent(T content) {
         this.content = content;
 =======
+=======
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 public class ApiResponse {
 
     private int id;
@@ -37,6 +40,9 @@ public class ApiResponse {
 
     public void setId(int id) {
         this.id = id;
+<<<<<<< HEAD
+>>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
+=======
 >>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     }
 
