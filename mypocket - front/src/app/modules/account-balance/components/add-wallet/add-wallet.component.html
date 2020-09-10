@@ -1,0 +1,29 @@
+<div class="cont">
+
+    <form [formGroup]="walletFormGroup" (ngSubmit)="onSubmit()" class="controls-container">
+
+        <!-- <div class="controls-container"> -->
+        <div class="field">
+            <label class="label">Wallet name:</label>
+            <div class="control">
+                <input formControlName="name" class="input" type="text" placeholder="name">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Quantity:</label>
+            <div class="control">
+                <input formControlName="quantity" class="input" type="text" placeholder="quantity">
+            </div>
+        </div>
+
+        <div class="field button-section-margin">
+            <div class="control">
+                <button type="submit" class="button is-link is-fullwidth">Submit</button>
+            </div>
+        </div>
+
+    <!-- </div> -->
+
+    </form>
+</div>

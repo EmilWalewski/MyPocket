@@ -1,0 +1,47 @@
+.hero-body .container{
+    padding-left: 7rem;
+}
+
+@media(max-width: 768px){
+
+    .mobile-view{
+        height: 100vh;
+
+        .hero-body{
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            .container{
+                padding-left: 0;
+
+                .title{
+                    font-size: 1.7rem;
+                }
+
+                .subtitle{
+                    font-size: 1.1rem;
+                }
+                
+            }
+        }
+    }
+}
+
+@media(min-width: 1200px){
+
+    .hero-body{
+
+        .container{
+            margin-left: 5rem;
+
+            .title{
+                font-size: 3rem;
+            }
+
+            .subtitle{
+                font-size: 1.7rem;
+            }
+        }
+    }
+}

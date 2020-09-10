@@ -1,0 +1,105 @@
+<ng-container #progressContainer></ng-container>
+
+<section class="section is-medium main-content-section">
+    <div class="container">
+        <div class="central-content-container">
+
+            <input type="month" #dateSelector class="date" [ngStyle]="setMargin()" (change)="filterReceipts($event)">
+
+            <div class="filterIndicator" *ngIf="indicatorIsVisible">
+                <div class="content shadow">
+                    <span (click)="closeFilter()">X</span>
+                    <p>{{dateSelector.value}}</p>
+                </div>
+            </div>
+
+            <!-- <div class="box shadow pointer" *ngFor="let receipt of receiptLists" (click)="showReceiptDetails(receipt.id)">
+                <article class="media">
+                    <div class="media-left 5custom-date">
+                        <figure class="image is-64x64">
+                            <img #receiptPhoto src="" alt="receipt.shopping_date">
+                            <p class="day">{{receipt.shopping_date | receiptDate}}</p>
+                            <p>{{receipt.shopping_date | receiptDate:'year'}}</p>
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>{{receipt.shop_name}}</strong>
+                                <br>
+                                {{receipt.shopping_date | receiptDate:'fullDate'}}
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <a class="level-item" aria-label="reply">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-reply" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <a class="level-item" aria-label="retweet">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-retweet" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <a class="level-item" aria-label="like">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div> -->
+
+            <div class="custom-box shadow pointer" *ngFor="let receipt of receiptLists"
+                (click)="showReceiptDetails(receipt.id)">
+                <div class="box-content">
+                    <div class="box-icon">
+                        <span class="icon is-large has-text-info">
+                            <i class="fas resize-icon fa-3x fa-shopping-basket"></i>
+                        </span>
+                    </div>
+                    <div class="shopping-info">
+                        <div class="shopping-details">
+                            <p>
+                                <strong>{{receipt.shop_name}}</strong>
+                            </p>
+                            <p>
+                                {{receipt.shopping_date | receiptDate:'fullDate'}}
+                            </p>
+                            <p>
+                                {{receipt.price}} PLN
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="bottom-menu">
+    <div class="opt" (click)="openFileDialog()">
+        <span class="icon">
+            <i class="fas fa-lg fa-plus-circle"></i>
+        </span>
+        <input #fileSelector (change)="onFileChange($event)" accept="image/*" type="file" [hidden]="true">
+        <p>Add receipt</p>
+    </div>
+</div>
+
+<ng-template #processingBar>
+    <div class="progress-bar-box">
+        <div class="progress-box">
+            <div class="progress-content">
+                <h2>Processing</h2>
+                <progress class="progress is-link" [value]='progress' max="1"> 32% </progress>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<router-outlet name="bolek"></router-outlet>

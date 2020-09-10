@@ -1,0 +1,33 @@
+<div class="container is-fullhd">
+    <figure class="image is-5by4">
+        <img [src]="url" alt="Receipt Image">
+    </figure>
+
+    <div class="details-container">
+        <h1>{{receipt.shop_name}}</h1>
+
+        <div class="details">
+            <div class="shop-name details-section">
+                <p>Shop Name:</p>
+                <p class="">{{receipt.shop_name}}</p>
+            </div>
+            <div class="date details-section">
+                <p>Date:</p>
+                <input type="date" [value]="dateValue | date:'yyyy-MM-dd'" (change)="setNewShoppingDate($event)">
+                <!-- <p>{{receipt.shopping_date | receiptDate:'fullDate'}}</p> -->
+            </div>
+            <div class="time details-section">
+                <p>Time:</p>
+                <p>{{receipt.shopping_date | receiptDate:'time'}}</p>
+            </div>
+            <div class="price details-section">
+                <p>Price:</p>
+                <p class="price">{{receipt.price}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="inform-modal" [ngClass]="{'show': showModal}">
+    <p>Date updated successfully!</p>
+</div>
