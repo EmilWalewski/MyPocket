@@ -4,15 +4,7 @@ import com.mypocket.errors.ResourceNotFoundException;
 import com.mypocket.security.userConfiguration.PrincipalDetailsService;
 import com.mypocket.storeManagement.entities.*;
 import com.mypocket.storeManagement.models.ShoppingModel;
-<<<<<<< HEAD
-<<<<<<< HEAD
 //import org.json.JSONObject;
-=======
-import org.json.JSONObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-import org.json.JSONObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,15 +26,7 @@ public class MySqlStoreUtilities {
     @PersistenceContext(unitName = "mySqlFactory")
     private EntityManager sqlEntityManager;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 //    private JSONObject globalJsonObject;
-=======
-    private JSONObject globalJsonObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-    private JSONObject globalJsonObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
     @Transactional
     public String createShopping(ShoppingModel shoppingModel){
@@ -52,15 +36,7 @@ public class MySqlStoreUtilities {
         Shopping shopping = new Shopping(shoppingModel);
         shopping.setProductList(shoppingModel.getProductList().stream().map(Product::new).collect(Collectors.toList()));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 //        globalJsonObject = new JSONObject();
-=======
-        globalJsonObject = new JSONObject();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-        globalJsonObject = new JSONObject();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
         shopping.getProductList().forEach(product ->
 
@@ -74,22 +50,10 @@ public class MySqlStoreUtilities {
 
 
         sqlEntityManager.persist(shopping);
-<<<<<<< HEAD
-<<<<<<< HEAD
 //        globalJsonObject.put("message", "Shopping information saved successfully");
 
 //        return globalJsonObject.toString();
         return null;
-=======
-        globalJsonObject.put("message", "Shopping information saved successfully");
-
-        return globalJsonObject.toString();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-        globalJsonObject.put("message", "Shopping information saved successfully");
-
-        return globalJsonObject.toString();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     }
 
     @SuppressWarnings("unchecked")
@@ -142,18 +106,8 @@ public class MySqlStoreUtilities {
     public void createUser() {
 
         User user = new User();
-<<<<<<< HEAD
-<<<<<<< HEAD
         user.setUsername("b");
         user.setPassword(passwordEncoder.encode("b"));
-=======
-        user.setUsername("user1");
-        user.setPassword(passwordEncoder.encode("pass1"));
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-        user.setUsername("user1");
-        user.setPassword(passwordEncoder.encode("pass1"));
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
         user.setIsActive(1);
 
         sqlEntityManager.persist(user);

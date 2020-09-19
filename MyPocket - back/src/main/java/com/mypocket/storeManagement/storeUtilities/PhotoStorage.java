@@ -3,15 +3,8 @@ package com.mypocket.storeManagement.storeUtilities;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mypocket.storeManagement.entities.Photo;
 import com.mypocket.storeManagement.entities.Receipt;
-<<<<<<< HEAD
-<<<<<<< HEAD
 //import org.json.JSONObject;
-=======
-import org.json.JSONObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-import org.json.JSONObject;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,6 +21,9 @@ public class PhotoStorage {
 
     @PersistenceContext(unitName = "mySqlFactory")
     private EntityManager sqlEntityManager;
+
+    @Autowired
+    private UserStore userStore;
 
 
     @Transactional
@@ -60,8 +56,6 @@ public class PhotoStorage {
 
             return receipt.getId();
         }
-
-
     }
 
     public String getReceipt(int id){
@@ -86,13 +80,13 @@ public class PhotoStorage {
         return null;
     }
 
-    public String getReceipts(){
+    public String getReceipts(String username){
 
         try {
 
-
             return new ObjectMapper().writeValueAsString(
-                    sqlEntityManager.createQuery("from Receipt", Receipt.class)
+                    sqlEntityManager.createQuery("from Receipt where user = ?1", Receipt.class)
+                    .setParameter(1, userStore.findUserByUserName(username).get())
                     .getResultStream()
                     .map(receipt -> {
                         receipt.setEncodedImage(Base64.getEncoder().encodeToString(receipt.getReceipt_photo().getData()));

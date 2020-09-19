@@ -17,11 +17,7 @@ export class ReceiptDatePipe implements PipeTransform {
     if (args[0] === 'fullDate') {
 
       return date.getFullYear() + '-'
-<<<<<<< HEAD
         + (date.getMonth() < 10 ? ('0' + (date.getMonth() + 1)) : date.getMonth().toString()) + '-'
-=======
-        + (date.getMonth() < 10 ? ('0' + date.getMonth()) : date.getMonth().toString()) + '-'
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
         + (date.getDate() < 10 ? ('0' + date.getDate()) : date.getDate());
     }
 

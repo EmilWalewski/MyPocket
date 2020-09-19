@@ -11,12 +11,6 @@ const routes: Routes = [
             path: '', component: ShoppingListComponent
           },
           {
-<<<<<<< HEAD
-=======
-            path: 'shop', component: TestComponent
-          },
-          {
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
             path: ':id', component: ShoppingDetailsComponent
           }
         ]

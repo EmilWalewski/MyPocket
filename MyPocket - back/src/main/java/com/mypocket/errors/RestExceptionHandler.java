@@ -22,15 +22,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-<<<<<<< HEAD
-<<<<<<< HEAD
     protected ResponseEntity<Object> badCredentials(BadCredentialsException ex) {
-=======
-    protected ResponseEntity<Object> handleEntityNotFound(BadCredentialsException ex) {
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-    protected ResponseEntity<Object> handleEntityNotFound(BadCredentialsException ex) {
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
         ErrorMessage apiError = new ErrorMessage(HttpStatus.NOT_FOUND, ex);
 

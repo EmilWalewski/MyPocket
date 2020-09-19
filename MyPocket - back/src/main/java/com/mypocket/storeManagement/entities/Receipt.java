@@ -61,16 +61,13 @@ public class Receipt {
 
     private transient String encodedImage;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+    private transient String userName;
+
+    @JsonIgnore
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     public Receipt() {
     }
 
@@ -120,5 +117,21 @@ public class Receipt {
 
     public void setEncodedImage(String encodedImage) {
         this.encodedImage = encodedImage;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

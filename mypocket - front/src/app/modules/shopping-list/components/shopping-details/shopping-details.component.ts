@@ -76,7 +76,7 @@ export class ShoppingDetailsComponent implements OnInit, AfterViewInit, OnDestro
     console.log(b);
     this.receipt.shopping_date = b;
 
-    console.log(this.receipt);
+    // console.log(this.receipt);
     this.receiptService.uploadReceipt(this.receipt)
       .subscribe(response => {
 
@@ -88,12 +88,7 @@ export class ShoppingDetailsComponent implements OnInit, AfterViewInit, OnDestro
           }, 2000);
 
         }
-<<<<<<< HEAD
       });
-=======
-      },
-        err => console.log(err));
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
   }
 

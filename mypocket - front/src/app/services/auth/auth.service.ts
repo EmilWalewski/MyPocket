@@ -15,23 +15,26 @@ export class AuthService {
   private logged$;
   public currentUserV;
 
-<<<<<<< HEAD
   private apiUrl = 'http://localhost:8080';
 
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   constructor(private httpService: HttpClient) {
     this.logged$ = new BehaviorSubject<boolean>(false);
     this.currentUserV = this.logged$.asObservable();
   }
 
-<<<<<<< HEAD
   authenticate(userData: LoginData) {
 
-    return this.httpService.post<ApiResponse>(`${this.apiUrl}/authenticate/`, userData)
+    const httpOptions = {
+      // withCredentials: true,
+      observe: 'response' as 'response'
+    };
+
+    return this.httpService.post<ApiResponse>(`${this.apiUrl}/authenticate/`, userData, httpOptions)
       .pipe(
         tap(res => {
-          localStorage.setItem('auth_token', res.token);
+          localStorage.setItem('auth_token', res.body.token);
+          // console.log(res.headers.keys());
+          // console.log(document.cookie.split(';'));
         }),
         mapTo(true),
         catchError(error => {
@@ -58,22 +61,6 @@ export class AuthService {
 
   private getRefreshToken() {
     return localStorage.getItem('refresh_token');
-=======
-  authenticate(userData: LoginData): Observable<boolean> {
-
-    return this.httpService.post<ApiResponse>('http://localhost:8080/authenticate/', userData)
-      .pipe(
-        switchMap(res => {
-          localStorage.setItem('auth_token', res.token);
-
-          // stay logged in throw pages refresh
-          this.logged$.next(true);
-
-          // return 0 validation errors
-          return of(false);
-        }),
-      );
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
   }
 
   public get currentUser() {

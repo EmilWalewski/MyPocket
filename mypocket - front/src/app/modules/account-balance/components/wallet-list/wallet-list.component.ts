@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ViewChildren, QueryList, ElementRef, Renderer2, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { __spreadArrays } from 'tslib';
-import { WalletComponent } from '../wallet/wallet.component';
 
 @Component({
   selector: 'app-wallet-list',
@@ -71,6 +69,8 @@ export class WalletListComponent implements OnInit{
       this.isWalletSelected = true;
     }
   }
+
+  // ustawic cookie po stronie serwera z danymi usera i odczytac je podczas zapytania typu post
 
   setMainWallet() {
     // this.walletLists.push(this.mainWallet);

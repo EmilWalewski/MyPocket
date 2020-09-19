@@ -2,13 +2,7 @@ package com.mypocket.security;
 
 
 import com.mypocket.security.jwtConfiguration.jwtFilter.JwtFilter;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.mypocket.security.jwtConfiguration.jwtProvider.JwtProvider;
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 import com.mypocket.security.userConfiguration.PrincipalDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -44,44 +38,20 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
     * */
 
     private PrincipalDetailsService principalDetailsService;
-<<<<<<< HEAD
-<<<<<<< HEAD
     private JwtProvider tokenProvider;
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
 
 
     @Autowired
-<<<<<<< HEAD
-<<<<<<< HEAD
     public GlobalConfiguration(PrincipalDetailsService principalDetailsService, JwtProvider tokenProvider) {
         this.principalDetailsService = principalDetailsService;
         this.tokenProvider = tokenProvider;
-=======
-    public GlobalConfiguration(PrincipalDetailsService principalDetailsService) {
-        this.principalDetailsService = principalDetailsService;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-    public GlobalConfiguration(PrincipalDetailsService principalDetailsService) {
-        this.principalDetailsService = principalDetailsService;
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     }
 
 
     @Bean
     public JwtFilter jwtFilter(){
-<<<<<<< HEAD
-<<<<<<< HEAD
         return new JwtFilter(tokenProvider, principalDetailsService);
-=======
-        return new JwtFilter();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-        return new JwtFilter();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     }
 
 
@@ -112,38 +82,18 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/authenticate/**")
-<<<<<<< HEAD
-<<<<<<< HEAD
             .permitAll();
 
         http
             .authorizeRequests()
             .antMatchers("/receipt/**")
             .permitAll();
-=======
-            .permitAll()
-
-            .antMatchers("/receipt/**").permitAll();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-            .permitAll()
-
-            .antMatchers("/receipt/**").permitAll();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
 
         //requests management
         http
             .authorizeRequests()
             .anyRequest()
-<<<<<<< HEAD
-<<<<<<< HEAD
             .permitAll();
-=======
-            .authenticated();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
-=======
-            .authenticated();
->>>>>>> 9e6d022973377bf9283ae4cf365c8311ec811e59
     }
 
     @Override
@@ -179,6 +129,8 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PATCH", "OPTIONS"));
         configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
+        configuration.setExposedHeaders(Arrays.asList("X-US-CRED", "X-XSS-Protection"));
         configuration.setMaxAge(300L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
