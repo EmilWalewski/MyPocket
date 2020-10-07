@@ -2,6 +2,9 @@
 
     <form [formGroup]="walletFormGroup" (ngSubmit)="onSubmit()" class="controls-container">
 
+        <input formControlName="id" type="text" style="display: none;">
+        <input formControlName="isMainWallet" type="checkbox" style="display: none;">
+
         <!-- <div class="controls-container"> -->
         <div class="field">
             <label class="label">Wallet name:</label>

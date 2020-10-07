@@ -18,7 +18,7 @@
                                     <strong class="white-letters">{{mainWallet.name}}</strong>
                                 </p>
                                 <p>
-                                    {{mainWallet.amount}}
+                                    {{mainWallet.quantity}}
                                 </p>
 
                             </div>
@@ -33,7 +33,7 @@
 
             <ng-container *ngFor="let wallet of walletLists; let i = index">
 
-                <div class="content-container" [ngStyle]="{'display': !wallet.selected ? 'block' : 'none'}"
+                <div class="content-container" [ngStyle]="{'display': !wallet.isMainWallet ? 'block' : 'none'}"
                     (click)="selectWallet($event, i)" #wallet>
 
                     <!-- <input type="radio" class="wallet-checkbox" name="wallet" [value]="receipt"> -->
@@ -50,7 +50,7 @@
                                         <strong>{{wallet.name}}</strong>
                                     </p>
                                     <p>
-                                        {{wallet.amount}}
+                                        {{wallet.quantity}}
                                     </p>
 
                                 </div>

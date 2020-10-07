@@ -24,7 +24,7 @@ export class ShoppingDetailsComponent implements OnInit, AfterViewInit, OnDestro
 
 
   constructor(private receiptService: ReceiptService, private route: ActivatedRoute, private sanitizer: DomSanitizer,
-              private router: Router) {
+    private router: Router) {
 
     // prevent before using current component, create new each time
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -36,24 +36,20 @@ export class ShoppingDetailsComponent implements OnInit, AfterViewInit, OnDestro
     // console.log(this.route.snapshot.paramMap.get('id'));
 
     this.receipt$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        console.log(params.get('id'));
-        return this.receiptService.getReceipt(+params.get('id'));
-      })
-    ).subscribe(data => {
+      switchMap((params: ParamMap) =>
+        this.receiptService.getReceipt(+params.get('id'))
+      )
+    ).subscribe((data: ReceiptResponse) => {
       this.receipt = data;
-      // console.log(data);
+
+      if (this.receipt === undefined) {
+        this.router.navigate(['list'], { relativeTo: this.route });
+      }
+
       this.url = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + data.encodedImage);
       this.dateValue = this.receipt.shopping_date;
-    });
-
-    // this.receiptService.getReceipt(id)
-    // .subscribe(data => {
-    //     this.receipt = data;
-    //     // console.log(data);
-    //     this.url = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + data.encodedImage);
-    //     this.dateValue = this.receipt.shopping_date;
-    //   });
+    }
+    );
   }
 
   ngOnInit(): void {
@@ -73,10 +69,9 @@ export class ShoppingDetailsComponent implements OnInit, AfterViewInit, OnDestro
 
     const b = new DatePipe('en-US').transform(receiptDate, 'yyyy-MM-dd HH:mm');
 
-    console.log(b);
     this.receipt.shopping_date = b;
 
-    // console.log(this.receipt);
+    //  console.log(this.receipt);
     this.receiptService.uploadReceipt(this.receipt)
       .subscribe(response => {
 

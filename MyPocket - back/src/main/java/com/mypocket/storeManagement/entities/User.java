@@ -20,7 +20,7 @@ public class User {
     @Column(name = "is_active", length = 1)
     private int isActive;
 
-    @OneToMany(targetEntity = Wallet.class, fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(targetEntity = Wallet.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Wallet> wallets;
 
     public User() {

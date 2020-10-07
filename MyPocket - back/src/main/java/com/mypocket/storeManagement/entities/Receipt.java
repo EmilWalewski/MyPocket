@@ -61,7 +61,6 @@ public class Receipt {
 
     private transient String encodedImage;
 
-    private transient String userName;
 
     @JsonIgnore
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
@@ -117,14 +116,6 @@ public class Receipt {
 
     public void setEncodedImage(String encodedImage) {
         this.encodedImage = encodedImage;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public User getUser() {

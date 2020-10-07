@@ -5,9 +5,10 @@ import { createWorker } from 'tesseract.js';
 import { ReceiptService, ReceiptResponse } from 'src/app/services/receipt/receipt.service';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { DomSanitizer } from '@angular/platform-browser';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap, switchMap, map } from 'rxjs/operators';
 import { Subscription, Observable, of } from 'rxjs';
 import { Type } from '@angular/compiler';
+import { WalletService } from 'src/app/services/wallet/wallet.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -52,6 +53,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   // check if whatever date is selected
   indicatorIsVisible = false;
 
+  /**
+   *    Subscription array
+   */
+  private subs: Array<Subscription>;
 
   private tesseractConfig = {
     // If you want to set the language explicitly:
@@ -60,7 +65,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     tessedit_char_whitelist: ' 0123456789',
   };
 
-  constructor(private router: Router, private route: ActivatedRoute,
+  constructor(private router: Router, private route: ActivatedRoute, private walletService: WalletService,
     private receiptService: ReceiptService, private domSanitizer: DomSanitizer) {
 
     this.doOCR();
@@ -78,6 +83,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // this.uploadSubscription.unsubscribe();
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   async doOCR() {
@@ -137,11 +143,20 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
       console.log(receipt);
 
-      this.receiptService
+      this.subs.push(this.receiptService
         .uploadReceipt(receipt, event.target.files[0])
         .subscribe(data => {
           this.router.navigate([data.body.id], { relativeTo: this.route });
-        });
+
+          /**
+           *
+           *  UPLOAD MAIN WALLET QUANTITY
+           *
+           */
+
+          this.subs.push(this.walletService.getMainWallet(receipt)
+            .subscribe(wallet => this.walletService.uploadWallet(wallet)));
+        }));
 
       this.progressContainer.clear();
 
@@ -166,7 +181,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         this.receiptLists =
           this.receiptLists
             .filter(r =>
-              new Date(r.shopping_date).getMonth() === (new Date(event.target.value).getMonth() + 1)
+              new Date(r.shopping_date).getMonth() === (new Date(event.target.value).getMonth())
             );
         this.indicatorIsVisible = true;
 

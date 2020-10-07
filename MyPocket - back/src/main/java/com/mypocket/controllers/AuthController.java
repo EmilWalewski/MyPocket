@@ -37,6 +37,15 @@ public class AuthController {
     public ResponseEntity<JwtResponse> authenticate(@RequestBody LoginModel loginModel, HttpServletResponse response){
 
 
+        /*
+        *
+        *   If client set withCredentials to true and server set allowCredentials to false we will got error
+        *
+        *   If client set withCredentials to false and server set allowCredentials to true we will not set any cookie
+        *
+        *   If both set flags to true we will set cookie
+        *
+        * */
 
         Cookie cookie = new Cookie("X-US-CRED", loginModel.getUsername());
 

@@ -4,6 +4,7 @@ import com.mypocket.security.jwtConfiguration.jwtProvider.JwtProviderImp;
 import com.mypocket.storeManagement.models.ShoppingModel;
 import com.mypocket.storeManagement.storeUtilities.MySqlStoreUtilities;
 import com.mypocket.storeManagement.validators.ValidationBuilder;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/shopping")
+@RequestMapping("/test")
 public class testcontroller {
 
     @Autowired
@@ -23,13 +24,16 @@ public class testcontroller {
     JwtProviderImp provider;
 
     @GetMapping(value = "/init")
-    public void init(){
+    public String init(){
 
 //        mySqlStoreUtilities.createUser();
 
 //        return mySqlStoreUtilities.getUser();
+        JSONObject ob = new JSONObject();
+        ob.put("name", "Black Johny");
+        ob.put("age", 30);
 
-//        return provider.generateToken();
+        return ob.toString();
     }
 
 

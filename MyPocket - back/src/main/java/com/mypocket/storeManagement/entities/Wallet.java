@@ -1,5 +1,7 @@
 package com.mypocket.storeManagement.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mypocket.annotations.PriceValidator;
 
 import javax.persistence.*;
@@ -21,9 +23,11 @@ public class Wallet {
     @PriceValidator
     private Double quantity;
 
-    @Column(name = "is_selected")
-    private boolean isSelected;
+    @Column(name = "is_main_wallet")
+    @JsonProperty("isMainWallet")
+    private boolean isMainWallet;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -55,12 +59,12 @@ public class Wallet {
         this.quantity = quantity;
     }
 
-    public boolean isSelected() {
-        return isSelected;
+    public boolean isMainWallet() {
+        return isMainWallet;
     }
 
-    public void setSelected(boolean selected) {
-        isSelected = selected;
+    public void setMainWallet(boolean mainWallet) {
+        isMainWallet = mainWallet;
     }
 
     public User getUser() {

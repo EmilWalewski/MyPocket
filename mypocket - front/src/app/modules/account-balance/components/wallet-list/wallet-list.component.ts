@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ViewContainerRef, ViewChildren, QueryList, ElementRef, Renderer2, AfterViewInit, AfterContentInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Wallet, WalletService } from 'src/app/services/wallet/wallet.service';
 import { __spreadArrays } from 'tslib';
 
 @Component({
@@ -7,15 +8,9 @@ import { __spreadArrays } from 'tslib';
   templateUrl: './wallet-list.component.html',
   styleUrls: ['./wallet-list.component.scss']
 })
-export class WalletListComponent implements OnInit{
+export class WalletListComponent implements OnInit, OnDestroy {
 
-  walletLists = [
-    new Wal('Wallet 1', 30, false),
-    new Wal('Wallet 2', 40, false),
-    new Wal('Wallet 3', 50, true),
-    new Wal('Wallet 4', 10.58, false),
-    new Wal('Wallet 5', 5.90, false)
-  ];
+  walletLists: Array<Wallet>;
 
   isWalletSelected;
 
@@ -27,21 +22,50 @@ export class WalletListComponent implements OnInit{
 
   @ViewChildren('wallet') private wallets: QueryList<ElementRef>;
 
-  constructor(private renderer: Renderer2, private router: Router) { }
+  constructor(private renderer: Renderer2, private router: Router, private route: ActivatedRoute, private walletService: WalletService) { }
 
   ngOnInit(): void {
+    this.walletService.getWallets().subscribe(wallets => { this.walletLists = wallets; this.init(); });
+  }
+
+  ngOnDestroy(): void {
+    this.walletService.saveAllChanges(this.walletLists);
+  }
+
+  /**
+   *
+   *    init method
+   *
+   *
+   */
+
+  init() {
+
+
+
     this.isWalletSelected = false;
 
+    console.log(this.walletLists);
+
+    if (this.walletLists.length === 0) {
+      alert('zero length');
+      const t = { id: 0, name: 'Default', quantity: 0, isMainWallet: true };
+      this.walletService.uploadWallet(t).subscribe(data => { });
+      this.walletLists.push(t);
+    }
+
     this.mainWallet = this.walletLists.filter((wal, index) => {
-      if (wal.selected === true) {
+      if (wal.isMainWallet === true) {
         this.mainWalletIndex = index;
         return true;
       }
     })[0];
 
-    // this.walletLists = this.walletLists.filter(wal => wal.selected !== true);
-    // set selected wallet here -> data get from service
   }
+
+  // ------------------------------------------------------------------------------
+
+
 
   selectWallet(event: PointerEvent, id?) {
     this.selectedWalletIndex = id;
@@ -70,42 +94,31 @@ export class WalletListComponent implements OnInit{
     }
   }
 
-  // ustawic cookie po stronie serwera z danymi usera i odczytac je podczas zapytania typu post
 
   setMainWallet() {
-    // this.walletLists.push(this.mainWallet);
-    // this.mainWallet = this.walletLists[this.selectedWalletIndex];
 
     this.walletLists.forEach((wal, index) => {
       if (index === this.selectedWalletIndex) {
         this.mainWallet = wal;
         this.mainWalletIndex = index;
-        wal.selected = true;
+        wal.isMainWallet = true;
       }
       else {
-        wal.selected = false;
+        wal.isMainWallet = false;
       }
     });
 
     this.walletLists = this.walletLists.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
-    // this.walletLists = this.walletLists
-    //   .filter(wal => wal !== this.mainWallet)
-    //   .sort((a, b) => {
-    //     return a.name.localeCompare(b.name);
-    //   });
 
-
+    this.walletService.updateCashedWallets(this.walletLists);
   }
 
   editWallet() {
     // get wallet from list service, so to retrive wallet id
-    this.router.navigate(['wallet', this.selectedWalletIndex]);
+    // this.router.navigate(['wallet', this.selectedWalletIndex], { relativeTo: this.route });
+    this.router.navigate(['wallet'], { queryParams: { index: this.selectedWalletIndex }, relativeTo: this.route });
   }
 }
 
-class Wal {
-
-  constructor(public name, private amount, public selected: boolean) { }
-}

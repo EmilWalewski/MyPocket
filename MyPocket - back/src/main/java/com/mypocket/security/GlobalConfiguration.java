@@ -130,7 +130,7 @@ public class GlobalConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PATCH", "OPTIONS"));
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
-        configuration.setExposedHeaders(Arrays.asList("X-US-CRED", "X-XSS-Protection"));
+//        configuration.setExposedHeaders(Arrays.asList("X-US-CRED", "X-XSS-Protection"));
         configuration.setMaxAge(300L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

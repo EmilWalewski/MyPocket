@@ -12,9 +12,14 @@ const routes: Routes = [
           },
           {
             path: ':id', component: ShoppingDetailsComponent
+          },
+          {
+            path: '**',
+            redirectTo: '',
+            pathMatch: 'full'
           }
         ]
-    }
+    },
 ];
 
 @NgModule({
