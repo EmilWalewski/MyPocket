@@ -11,6 +11,7 @@ public class TestValidationClass implements ConstraintValidator<TestValidationAn
     @Override
     public void initialize(TestValidationAnnotation constraintAnnotation) {
 
+        System.out.println("sdfsdf");
 
     }
 
